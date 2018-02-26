@@ -32,5 +32,9 @@ class Ability
     can :manage, Idea do |idea|
       idea.user == user
     end
+
+    can :manage, Review do |review|
+      review.user == user
+    end
   end
 end

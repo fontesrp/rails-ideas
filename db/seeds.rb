@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Review.destroy_all
 Idea.destroy_all
 User.destroy_all
 
@@ -33,11 +34,23 @@ puts "Created #{users.count} users"
 puts "The root user is:\n#{root_user}"
 
 100.times do
-  Idea.create({
+
+  i = Idea.create({
     title: Faker::ChuckNorris.fact,
     description: Faker::Lorem.paragraph,
     user: users.sample
   })
+
+  if i.valid?
+    rand(1..10).times do
+      Review.create({
+        body: Faker::Friends.quote,
+        idea: i,
+        user: users.sample
+      })
+    end
+  end
 end
 
 puts "Created #{Idea.count} ideas"
+puts "Created #{Review.count} reviews"

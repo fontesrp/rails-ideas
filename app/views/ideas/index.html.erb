@@ -6,6 +6,8 @@
       <strong><%= link_to idea.title, idea_path(idea) %></strong>
       <br>
       <%= idea.description %>
+      <br>
+      <small><%= idea.user.full_name %></small>
     </p>
   </div>
 <% end %>

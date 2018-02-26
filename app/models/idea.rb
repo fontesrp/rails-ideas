@@ -1,6 +1,8 @@
 class Idea < ApplicationRecord
 
-    belongs_to :user
+  belongs_to :user
 
-    validates :title, :description, presence: true
+  has_many :reviews, dependent: :destroy
+
+  validates :title, :description, presence: true
 end
