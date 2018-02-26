@@ -2,12 +2,14 @@
 
 <% @ideas.each do |idea| %>
   <div>
-    <p>
+    <div class="idea-title">
+      <div class="d-inline click-icon"><i class="fas fa-plus"></i></div>
       <strong><%= link_to idea.title, idea_path(idea) %></strong>
-      <br>
+    </div>
+    <div class="hidden">
       <%= idea.description %>
       <br>
       <small><%= idea.user.full_name %></small>
-    </p>
+    </div>
   </div>
 <% end %>
