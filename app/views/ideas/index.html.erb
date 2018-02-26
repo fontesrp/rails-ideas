@@ -1,0 +1,11 @@
+<h1>Ideas index</h1>
+
+<% @ideas.each do |idea| %>
+  <div>
+    <p>
+      <strong><%= link_to idea.title, idea_path(idea) %></strong>
+      <br>
+      <%= idea.description %>
+    </p>
+  </div>
+<% end %>
