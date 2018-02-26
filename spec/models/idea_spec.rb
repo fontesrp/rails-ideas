@@ -17,5 +17,11 @@ RSpec.describe Idea, type: :model do
       idea.valid?
       expect(idea.errors).to have_key(:description)
     end
+
+    it 'user must be present' do
+      idea.user = nil
+      idea.valid?
+      expect(idea.errors).to have_key(:user)
+    end
   end
 end
