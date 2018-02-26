@@ -22,22 +22,50 @@
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-              <spam class="nav-link" href="#" disabled>Hello, Mr. <%= current_user.full_name %></spam>
+            <spam class="nav-link" href="#" disabled>Hello, Mr. <%= current_user.full_name %></spam>
           </li>
+        <% end %>
+        <li class="nav-item">
+          <!-- <%= link_to "New Idea", new_idea_path, class: "nav-link" %> -->
+          <button type="button" class="btn nav-link" data-toggle="modal" data-target="#new-idea">
+            New Idea
+          </button>
+        </li>
+        <% if user_signed_in? %>
           <li class="nav-item">
-              <%= link_to "Sign Out", session_path, method: :delete, class: "nav-link" %>
+            <%= link_to "Sign Out", session_path, method: :delete, class: "nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Sign Up", new_user_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign In", new_user_path, class: "nav-link" %>
+            <%= link_to "Sign In", new_session_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>
     </div>
   </nav>
+
+  <div class="modal fade" id="new-idea" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="new-idea-label">New Idea</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render template: 'ideas/new' -%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="new-idea-save">Save idea</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container-fluid">
     <%= yield %>

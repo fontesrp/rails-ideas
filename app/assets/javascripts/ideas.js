@@ -22,6 +22,12 @@
                 }
             });
         });
+
+        const form = document.getElementById("new_idea");
+
+        document.getElementById("new-idea-save").addEventListener("click", function () {
+            form.submit();
+        });
     };
 
     window.addEventListener("load", winOnload);

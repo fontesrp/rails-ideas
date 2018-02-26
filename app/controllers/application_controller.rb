@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  def new_idea
+    @idea ||= Idea.new
+  end
+
+  helper_method :new_idea
 end
